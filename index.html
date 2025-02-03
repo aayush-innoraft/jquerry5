@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        height: 695px;
+        width: 100%;
+        padding: 10px;
+      }
+
+      .header {
+        text-align: center;
+        padding: 30px;
+        height: 20%;
+        width: 100%;
+        background-color: skyblue;
+        margin-bottom: 10px;
+      }
+      h1 {
+        color: white;
+      }
+      .content {
+        display: flex;
+        height: 60%;
+        width: 100%;
+      }
+
+      .left {
+        flex: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background-color: seagreen;
+        margin-right: 10px;
+        color: white;
+        font-size: 16px;
+      }
+
+      .right {
+        flex: 65%;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .maincontent {
+        width: 100%;
+        height: 75%;
+        background-color: yellow;
+      }
+
+      .lowercont {
+        margin-top: 10px;
+        width: 100%;
+        height: 25%;
+        background-color: grey;
+      }
+
+      .footer {
+        text-align: center;
+        padding: 30px;
+        height: 20%;
+        width: 100%;
+        background-color: orange;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      /* Popup Styles */
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+        background: white;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        z-index: 1000;
+      }
+
+      .popup h2 {
+        margin-bottom: 15px;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: red;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      /* Background overlay */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header"><h1>header</h1></div>
+      <div class="content">
+        <div class="left"><h1>left</h1></div>
+        <div class="right">
+          <div class="maincontent"><h1>main content</h1></div>
+          <div class="lowercont"><h1>extra space</h1></div>
+        </div>
+      </div>
+      <div class="footer"><h1>footer</h1></div>
+    </div>
+
+    <!-- Popup -->
+    <div class="overlay"></div>
+    <div class="popup">
+      <button class="close-btn">X</button>
+      <h2>Popup Content</h2>
+      <p>This is a popup message!</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".footer").click(function () {
+          $(".popup, .overlay").fadeIn();
+        });
+
+        $(".close-btn, .overlay").click(function () {
+          $(".popup, .overlay").fadeOut();
+        });
+      });
+    </script>
+  </body>
+</html>
